@@ -6,9 +6,9 @@
 - Nome do projeto: az204-appservice
 
 #### Implementar o Azure Functions (lembre-se de instalar Azure Functions Core Tools)
-Criado o projeto <i>"az204-function"</i>
+- Nome do projeto: az204-function
 
 #### Armazenamento de Blobs do Azure
-Criado o projeto <i>"az204-blob"</i>
+- Nome do projeto: az204-blob
 
 Referência: https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams
