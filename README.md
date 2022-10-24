@@ -12,4 +12,5 @@
 #### Armazenamento de Blobs do Azure
 - az204-blob
 
+
 Referência: https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams
