@@ -1,5 +1,5 @@
 
-## Laboratório de Estudo para Certificação AZ-204
+## Laboratório de estudo para certificação AZ-204
 ### Tópicos abordados
 #### Criar aplicativos Web do Serviço de Aplicativo do Azure
 Criado um projeto webapi básico e publicado no app service
