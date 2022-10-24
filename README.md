@@ -3,7 +3,7 @@
 ### Tópicos abordados
 
 #### Criar aplicativos Web do Serviço de Aplicativo do Azure
-Criado o projeto <i>"az204-appservice"</i>
+- Nome do projeto: az204-appservice
 
 #### Implementar o Azure Functions (lembre-se de instalar Azure Functions Core Tools)
 Criado o projeto <i>"az204-function"</i>
