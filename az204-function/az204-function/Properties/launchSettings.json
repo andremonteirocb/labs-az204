@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "az204_function": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7257",
+      "launchBrowser": false
+    }
+  }
+}
