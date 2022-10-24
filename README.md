@@ -5,8 +5,9 @@
 #### Criar aplicativos Web do Serviço de Aplicativo do Azure
 - Nome do projeto: az204-appservice
 
-#### Implementar o Azure Functions (lembre-se de instalar Azure Functions Core Tools)
+#### Implementar o Azure Functions
 - Nome do projeto: az204-function
+* instalar Azure Functions Core Tools (https://github.com/Azure/azure-functions-core-tools#installing)
 
 #### Armazenamento de Blobs do Azure
 - Nome do projeto: az204-blob
