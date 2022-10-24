@@ -1,8 +1,4 @@
 
-## Configurações
-### Criar o container baseado no arquivo "docker-compose.yaml"
-```
-    Entre na pasta que contém o arquivo "docker-compose.yaml" e execute o comando abaixo
-    docker-compose up
-```
+## LABORATÓRIO DE ESTUDO AZ-204
+#### Armazenamento de Blobs do Azure (az204-blob.csproj)
 
