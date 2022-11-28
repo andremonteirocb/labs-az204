@@ -12,5 +12,8 @@
 #### Armazenamento de Blobs do Azure
 - az204-blob
 
+#### Desenvolver soluções que usam o Azure Cosmos DB
+- az204-cosmodb
+
 
 Referência: https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams
