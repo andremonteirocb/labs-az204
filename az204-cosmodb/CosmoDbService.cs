@@ -1,4 +1,6 @@
 ﻿using Microsoft.Azure.Cosmos;
+using System.ComponentModel;
+using System.Reflection;
 
 public interface ICosmoDbService
 {
@@ -12,6 +14,7 @@ public interface ICosmoDbService
 
     Task<ItemResponse<T>> CreateItem<T>(string containerId, T input);
     Task<T> GetItem<T>(string containerId, string id);
+    Task Query(string containerId, string id);
 }
 public class CosmoDbService : ICosmoDbService
 {
@@ -70,5 +73,22 @@ public class CosmoDbService : ICosmoDbService
         var container = _database.GetContainer(containerId);
         var itemResponse = await container.ReadItemAsync<T>(id, new PartitionKey(id));
         return itemResponse.Resource;
+    }
+
+    public async Task Query(string containerId, string id)
+    {
+        var container = _database.GetContainer(containerId);
+        using FeedIterator<SalesOrder> feed = container.GetItemQueryIterator<SalesOrder>(
+            queryDefinition: new QueryDefinition(query: "SELECT * FROM SalesOrder p WHERE p.id = @id").WithParameter("@id", $"{id}")
+        );
+
+        while (feed.HasMoreResults)
+        {
+            FeedResponse<SalesOrder> response = await feed.ReadNextAsync();
+            foreach (SalesOrder item in response)
+            {
+                Console.WriteLine($"Sales item:\t{item.firstname}-{item.lastname}");
+            }
+        }
     }
 }
