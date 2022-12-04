@@ -15,5 +15,8 @@
 #### Desenvolver soluções que usam o Azure Cosmos DB
 - az204-cosmodb
 
+#### Implementar soluções de infraestrutura como serviço 
+- az204-arm
+- az204-acr
 
 Referência: https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams
