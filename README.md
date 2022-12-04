@@ -18,5 +18,6 @@
 #### Implementar soluções de infraestrutura como serviço 
 - az204-arm
 - az204-acr
+- az204-aci
 
 Referência: https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams
