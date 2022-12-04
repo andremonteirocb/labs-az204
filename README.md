@@ -6,7 +6,7 @@
 - az204-appservice
 
 #### Implementar o Azure Functions
-- az204-function (instalar Azure Functions Core Tools (https://github.com/Azure/azure-functions-core-tools#installing))
+- az204-function (instalar Azure Functions Core Tools [https://github.com/Azure/azure-functions-core-tools#installing])
 
 #### Armazenamento de Blobs do Azure
 - az204-blob
