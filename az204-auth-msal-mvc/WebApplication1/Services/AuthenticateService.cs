@@ -1,6 +1,6 @@
 ﻿using Microsoft.Identity.Client;
 
-namespace az204_msal
+namespace Services
 {
     public interface IAuthenticateService
     {
@@ -21,10 +21,7 @@ namespace az204_msal
                 .Build();
 
             string[] scopes = { "user.read" };
-
-            AuthenticationResult result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
-
-            Console.WriteLine($"Token:\t{result.AccessToken}");
+            var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
             return result.AccessToken;
         }
     }
