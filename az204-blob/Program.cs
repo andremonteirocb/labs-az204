@@ -19,6 +19,7 @@ static async Task Run(IServiceProvider services)
     var blobServiceClient = storageService.CreateConnection();
     var blobContainerClient = await storageService.CreateContainer(blobServiceClient);
 
+    await storageService.SetPolicy(Guid.NewGuid().ToString(), 1, blobContainerClient);
     await storageService.Upload(blobContainerClient);
     await storageService.Load(blobContainerClient);
     await storageService.Download(blobContainerClient);

@@ -9,6 +9,7 @@ public interface IStorageService
     Task Load(BlobContainerClient containerClient);
     Task Download(BlobContainerClient containerClient);
     Task Delete(BlobContainerClient containerClient);
+    Task SetPolicy(string namePolicy, int expiresInMinutes, BlobContainerClient containerClient);
 }
 public class StorageService : IStorageService
 {
@@ -18,14 +19,14 @@ public class StorageService : IStorageService
     public StorageService()
     {
         _containerName = "wtblob" + Guid.NewGuid().ToString();
-        _localPath = "caminho_arquivos_fisicos";
+        _localPath = @"C:\\Users\\andre.monteiro\\Dropbox\\Programação\\ASP.Net\\Estudos\\Certificacao.AZ204\\az204-blob\\data";
         _fileName = "wtfile" + Guid.NewGuid().ToString() + ".txt";
     }
     
     public BlobServiceClient CreateConnection()
     {
         // Copy the connection string from the portal in the variable below.
-        string storageConnectionString = "access_key___key1___connectionstring";
+        string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=az204storageaccalsam;AccountKey=zR4h7FcWp3PF5KsBDgSVDM8aAMAaH6sS4jhdEKL2rXnF/7MORbp57oRTVPi4dAPpVCLkgyN7SqrT+AStbOLgVQ==;EndpointSuffix=core.windows.net";
 
         // Create a client that can authenticate with a connection string
         BlobServiceClient blobServiceClient = new BlobServiceClient(storageConnectionString);
@@ -120,5 +121,21 @@ public class StorageService : IStorageService
         File.Delete(downloadFilePath);
 
         Console.WriteLine("Finished cleaning up.");
+    }
+
+    public async Task SetPolicy(string namePolicy, int expiresInMinutes, BlobContainerClient containerClient)
+    {
+        BlobSignedIdentifier identifier = new BlobSignedIdentifier
+        {
+            Id = namePolicy,
+            AccessPolicy = new BlobAccessPolicy
+            {
+                PolicyStartsOn = DateTimeOffset.UtcNow,
+                ExpiresOn = DateTimeOffset.UtcNow.AddMinutes(expiresInMinutes),
+                Permissions = "rw" //<(a)dd, (c)reate, (d)elete, (l)ist, (r)ead, or (w)rite>
+            }
+        };
+
+        await containerClient.SetAccessPolicyAsync(permissions: new BlobSignedIdentifier[] { identifier });
     }
 }
