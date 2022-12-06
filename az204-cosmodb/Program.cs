@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Cosmos;
+﻿using az204_cosmodb.Models;
+using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -15,49 +16,39 @@ using IHost host = Host.CreateDefaultBuilder(args)
     })
     .Build();
 
-await Run(host.Services);
+string databaseId = "az204Database";
+string containerId = "az204Container";
+string partitionKey = "/id";
 
-static async Task Run(IServiceProvider services)
-{
-    string databaseId = "az204Database";
-    string containerId = "az204Container";
-    string partitionKey = "/id";
+using IServiceScope serviceScope = host.Services.CreateScope();
+var provider = serviceScope.ServiceProvider;
+var cosmoDbService = provider.GetRequiredService<ICosmoDbService>();
 
-    using IServiceScope serviceScope = services.CreateScope();
-    var provider = serviceScope.ServiceProvider;
-    var cosmoDbService = provider.GetRequiredService<ICosmoDbService>();
+var database = await cosmoDbService.CreateDataBase(databaseId);
+//var database = cosmoDbService.GetDataBase(databaseId);
+//await cosmoDbService.DeleteDataBase();
 
-    var database = await cosmoDbService.CreateDataBase(databaseId);
-    //var database = cosmoDbService.GetDataBase(databaseId);
-    //await cosmoDbService.DeleteDataBase();
+var container = await cosmoDbService.CreateContainer(containerId, partitionKey);
+//var container = cosmoDbService.GetContainer(containerId);
+//await cosmoDbService.DeleteContainer(containerId);
 
-    var container = await cosmoDbService.CreateContainer(containerId, partitionKey);
-    //var container = cosmoDbService.GetContainer(containerId);
-    //await cosmoDbService.DeleteContainer(containerId);
+string id = new Random().Next(0, 1000).ToString();
+await cosmoDbService.CreateItem(containerId, new SalesOrder { id = id, firstname = $"André {id}", lastname = $"Monteiro {id}" });
+var result = await cosmoDbService.GetItem<SalesOrder>(containerId, id);
 
-    string id = new Random().Next(0, 1000).ToString();
-    await cosmoDbService.CreateItem(containerId, new SalesOrder { id = id, firstname = $"André {id}", lastname = $"Monteiro {id}" });
-    var result = await cosmoDbService.GetItem<SalesOrder>(containerId, id);
+//var query = new QueryDefinition(
+//    "select * from sales s where s.AccountNumber = @AccountInput ")
+//.WithParameter("@AccountInput", "Account1");
 
-    //var query = new QueryDefinition(
-    //    "select * from sales s where s.AccountNumber = @AccountInput ")
-    //.WithParameter("@AccountInput", "Account1");
+//FeedIterator<SalesOrder> resultSet = container.GetItemQueryIterator<SalesOrder>(
+//    query,
+//    requestOptions: new QueryRequestOptions()
+//    {
+//        PartitionKey = new PartitionKey("Account1"),
+//        MaxItemCount = 1
+//    });
 
-    //FeedIterator<SalesOrder> resultSet = container.GetItemQueryIterator<SalesOrder>(
-    //    query,
-    //    requestOptions: new QueryRequestOptions()
-    //    {
-    //        PartitionKey = new PartitionKey("Account1"),
-    //        MaxItemCount = 1
-    //    });
-}
+host.Run();
 
 Console.WriteLine("Press enter to exit the sample application.");
 Console.ReadLine();
-
-public class SalesOrder
-{
-    public string id { get; set; }
-    public string firstname { get; set; }
-    public string lastname { get; set; }
-}

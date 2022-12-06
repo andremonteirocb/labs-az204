@@ -1,16 +1,24 @@
-﻿using Microsoft.Identity.Client;
+﻿using az204_msal;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
-private const string _clientId = "APPLICATION_CLIENT_ID";
-private const string _tenantId = "DIRECTORY_TENANT_ID";
-
-var app = PublicClientApplicationBuilder
-    .Create(_clientId)
-    .WithAuthority(AzureCloudInstance.AzurePublic, _tenantId)
-    .WithRedirectUri("http://localhost")
+using IHost host = Host.CreateDefaultBuilder(args)
+    .ConfigureServices((_, services) =>
+    {
+        services.AddScoped<IAuthenticateService, AuthenticateService>();
+        services.AddScoped<IMeService, MeService>();
+    })
     .Build();
 
-string[] scopes = { "user.read" };
+using IServiceScope serviceScope = host.Services.CreateScope();
+var provider = serviceScope.ServiceProvider;
+var authenticateService = provider.GetRequiredService<IAuthenticateService>();
+var meService = provider.GetRequiredService<IMeService>();
 
-AuthenticationResult result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
+var accessToken = await authenticateService.Authenticate();
+await meService.ReadMe(accessToken);
 
-Console.WriteLine($"Token:\t{result.AccessToken}");
+host.Run();
+
+Console.WriteLine("Press enter to exit the sample application.");
+Console.ReadLine();
