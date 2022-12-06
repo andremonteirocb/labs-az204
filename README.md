@@ -22,4 +22,6 @@
 #### Implementar autenticação e autorização de usuário
 - az204-auth-msal
 
-Referência: https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams
+Referência: 
+https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams
+https://github.com/leandrofmarcos/AzDurableFunction
