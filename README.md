@@ -19,4 +19,7 @@
 - az204-acr
 - az204-aci
 
+#### Implementar autenticação e autorização de usuário
+- az204-auth-msal
+
 Referência: https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams
