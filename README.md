@@ -7,9 +7,11 @@
 
 #### Implementar o Azure Functions
 - az204-function (instalar Azure Functions Core Tools [https://github.com/Azure/azure-functions-core-tools#installing])
+- az204-function-durable
 
 #### Armazenamento de Blobs do Azure
 - az204-blob
+- az204-azcopy
 
 #### Desenvolver soluções que usam o Azure Cosmos DB
 - az204-cosmodb
@@ -21,6 +23,9 @@
 
 #### Implementar autenticação e autorização de usuário
 - az204-auth-msal
+- az204-auth-msal-mvc
+- az204-auth-signin-signout
+- az204-auth-graph
 
 Referências: <br />
 https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams <br />
