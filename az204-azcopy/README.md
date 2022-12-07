@@ -3,7 +3,7 @@
 #### Criar o grupo de recurso
 az group create -n rg-arm -l eastus
 
-#### Subir todos os recursos sem arquivo de parametros (projeto az204-arm)
+#### Subir uma storage e seu container baseado no modelo ARM (projeto az204-arm)
 az deployment group create --resource-group rg-arm --template-file storagedeploy.json
 
 #### Obter identificador da storage account
