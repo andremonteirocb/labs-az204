@@ -14,8 +14,8 @@ namespace az204_msal
 
     public class MeService : IMeService
     {
-        private const string _clientId = "a6e232a8-6746-4c07-b0a4-d60cfe642c0a";
-        private const string _tenantId = "4a58a022-18c2-4856-8cca-b61ef4c56cd5";
+        private const string _clientId = "APPLICATION_CLIENT_ID";
+        private const string _tenantId = "DIRECTORY_TENANT_ID";
 
         /// <summary>
         /// Obtém o token através do browser MSAL
@@ -36,7 +36,8 @@ namespace az204_msal
             // that allows you to define an async function to retrieve a token
             // Alternatively, you can create a class that implements IAuthenticationProvider
             // for more complex scenarios
-            var authProvider = new DelegateAuthenticationProvider(async (request) => {
+            var authProvider = new DelegateAuthenticationProvider(async (request) =>
+            {
                 // Use Microsoft.Identity.Client to retrieve token
                 var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 
@@ -131,7 +132,8 @@ namespace az204_msal
             // Callback function that receives the user prompt
             // Prompt contains the generated device code that use must
             // enter during the auth process in the browser
-            Func<DeviceCodeInfo, CancellationToken, Task> callback = (code, cancellation) => {
+            Func<DeviceCodeInfo, CancellationToken, Task> callback = (code, cancellation) =>
+            {
                 Console.WriteLine(code.Message);
                 return Task.FromResult(0);
             };
