@@ -27,6 +27,9 @@
 - az204-auth-signin-signout
 - az204-auth-graph
 
+#### Implementar soluções de nuvem seguras
+- em andamento
+
 Referências: <br />
 https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams <br />
 https://github.com/leandrofmarcos/AzDurableFunction
