@@ -99,8 +99,8 @@ namespace az204_msal
                 AuthorityHost = AzureAuthorityHosts.AzurePublicCloud
             };
 
-            var userName = "locatario@andremonteirocbhotmail.onmicrosoft.com";
-            var password = "Nin@0208";
+            var userName = "usuario";
+            var password = "senha";
 
             // https://docs.microsoft.com/dotnet/api/azure.identity.usernamepasswordcredential
             var userNamePasswordCredential = new UsernamePasswordCredential(
