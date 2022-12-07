@@ -3,6 +3,9 @@
 #### Criar o grupo de recurso
 az group create -n rg-arm -l eastus
 
+#### Criar service plan
+az appservice plan create -n nome_service_plan -l nome_location -g rg-arm --sku F1 --is-linux
+
 #### Criar app service
 az webapp create -n nome_app_serve -g rg-arm -p nome_service_plan --runtime "DOTNETCORE:6.0"
 
