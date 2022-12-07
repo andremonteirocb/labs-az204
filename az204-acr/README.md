@@ -1,7 +1,7 @@
 ## Azure Container Registry
 
 #### Criar azure container registry (ACR)
-az acr create --name nome_container_registry --resource-group nome_resource_group  --sku basic
+az acr create --name nome_container_registry --resource-group nome_resource_group --sku basic
 
 #### Gerar imagem através do dockerfile
 az acr build --image nome_image:tag_image --registry nome_container_registry .
