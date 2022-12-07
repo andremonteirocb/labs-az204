@@ -1,36 +1,151 @@
-﻿using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using System.Text.Json;
+﻿using Azure.Identity;
+using Microsoft.Graph;
+using Microsoft.Identity.Client;
 
 namespace az204_msal
 {
     public interface IMeService
     {
-        Task ReadMe(string accessToken);
+        Task ReadDelegateAuthenticationProvider();
+        Task ReadInteractiveBrowser();
+        Task ReadUsernamePassword();
+        Task ReadDeviceCode();
     }
 
     public class MeService : IMeService
     {
-        public async Task ReadMe(string accessToken)
+        private const string _clientId = "a6e232a8-6746-4c07-b0a4-d60cfe642c0a";
+        private const string _tenantId = "4a58a022-18c2-4856-8cca-b61ef4c56cd5";
+
+        /// <summary>
+        /// Obtém o token através do browser MSAL
+        /// </summary>
+        /// <returns></returns>
+        public async Task ReadDelegateAuthenticationProvider()
         {
-            string endpoint = "https://graph.microsoft.com/v1.0/me";
+            Console.WriteLine("Processando Provider delegate MSAL.");
 
-            // Create a new instance of HttpClient class
-            var client = new HttpClient();
+            var scopes = new[] { "User.Read" };
+            var app = PublicClientApplicationBuilder
+                .Create(_clientId)
+                .WithAuthority(AzureCloudInstance.AzurePublic, _tenantId)
+                .WithRedirectUri("http://localhost")
+                .Build();
 
-            // Build an auth header using your token
-            var authHeader = new AuthenticationHeaderValue("Bearer", accessToken);
+            // DelegateAuthenticationProvider is a simple auth provider implementation
+            // that allows you to define an async function to retrieve a token
+            // Alternatively, you can create a class that implements IAuthenticationProvider
+            // for more complex scenarios
+            var authProvider = new DelegateAuthenticationProvider(async (request) => {
+                // Use Microsoft.Identity.Client to retrieve token
+                var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 
-            // Set httpClient to use the previously-build auth header
-            client.DefaultRequestHeaders.Authorization = authHeader;
+                request.Headers.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", result.AccessToken);
+            });
 
-            // Make a HTTP GET request to the endpoint
-            var response = await client.GetAsync(endpoint);
-            if (response.IsSuccessStatusCode)
+            var graphClient = new GraphServiceClient(authProvider);
+            var user = await graphClient.Me
+                .Request()
+                .GetAsync();
+
+            Console.WriteLine($"Graph Me:\t{user.DisplayName}");
+        }
+
+        /// <summary>
+        /// Obtém o token através do browser autenticando com sua conta
+        /// </summary>
+        /// <returns></returns>
+        public async Task ReadInteractiveBrowser()
+        {
+            Console.WriteLine("Processando Interactive Browser.");
+
+            var scopes = new[] { "User.Read" };
+            var options = new InteractiveBrowserCredentialOptions
             {
-                var json = await response.Content.ReadFromJsonAsync<dynamic>();
-                Console.WriteLine($"Graph me:\t{JsonSerializer.Serialize(json)}");
-            }
+                TenantId = _tenantId,
+                ClientId = _clientId,
+                AuthorityHost = AzureAuthorityHosts.AzurePublicCloud,
+                // MUST be http://localhost or http://localhost:PORT
+                // See https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/System-Browser-on-.Net-Core
+                RedirectUri = new Uri("http://localhost"),
+            };
+
+            // https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential
+            var interactiveCredential = new InteractiveBrowserCredential(options);
+
+            var graphClient = new GraphServiceClient(interactiveCredential, scopes);
+            var user = await graphClient.Me
+                .Request()
+                .GetAsync();
+
+            Console.WriteLine($"Graph Me:\t{user.DisplayName}");
+        }
+
+        /// <summary>
+        /// Obtém o token através de um login e senha
+        /// </summary>
+        /// <returns></returns>
+        public async Task ReadUsernamePassword()
+        {
+            Console.WriteLine("Processando Usuário/Senha.");
+
+            var scopes = new[] { "User.Read" };
+
+            // using Azure.Identity;
+            var options = new TokenCredentialOptions
+            {
+                AuthorityHost = AzureAuthorityHosts.AzurePublicCloud
+            };
+
+            var userName = "locatario@andremonteirocbhotmail.onmicrosoft.com";
+            var password = "Nin@0208";
+
+            // https://docs.microsoft.com/dotnet/api/azure.identity.usernamepasswordcredential
+            var userNamePasswordCredential = new UsernamePasswordCredential(
+                userName, password, _tenantId, _clientId, options);
+
+            var graphClient = new GraphServiceClient(userNamePasswordCredential, scopes);
+            var user = await graphClient.Me
+                .Request()
+                .GetAsync();
+
+            Console.WriteLine($"Graph Me:\t{user.DisplayName}");
+        }
+
+        /// <summary>
+        /// Obtém o token através do browser informando o device code
+        /// </summary>
+        /// <returns></returns>
+        public async Task ReadDeviceCode()
+        {
+            Console.WriteLine("Processando Device Code.");
+
+            var scopes = new[] { "User.Read" };
+            // using Azure.Identity;
+            var options = new TokenCredentialOptions
+            {
+                AuthorityHost = AzureAuthorityHosts.AzurePublicCloud
+            };
+
+            // Callback function that receives the user prompt
+            // Prompt contains the generated device code that use must
+            // enter during the auth process in the browser
+            Func<DeviceCodeInfo, CancellationToken, Task> callback = (code, cancellation) => {
+                Console.WriteLine(code.Message);
+                return Task.FromResult(0);
+            };
+
+            // https://docs.microsoft.com/dotnet/api/azure.identity.devicecodecredential
+            var deviceCodeCredential = new DeviceCodeCredential(
+                callback, _tenantId, _clientId, options);
+
+            var graphClient = new GraphServiceClient(deviceCodeCredential, scopes);
+            var user = await graphClient.Me
+                .Request()
+                .GetAsync();
+
+            Console.WriteLine($"Graph Me:\t{user.DisplayName}");
         }
     }
 }
