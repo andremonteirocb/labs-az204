@@ -1,6 +1,6 @@
 ## Azure Active Directory
 
-#### Criar um aplicativo no active directory
+#### Criar um aplicativo no AD
 
 #### Configurar authencation -> add platform
 - https://localhost:5001/
