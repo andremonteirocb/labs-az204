@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Desktop.Models;
+using az204.auth.signin.signout.Models;
 
-namespace Desktop.Controllers;
+namespace az204.auth.signin.signout;
 
 [Authorize]
 public class HomeController : Controller

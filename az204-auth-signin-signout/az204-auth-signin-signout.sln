@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "az204-signin-signout", "az204-signin-signout.csproj", "{A71272FF-3382-49C0-B562-DCD3BA5B869B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "az204-auth-signin-signout", "az204-auth-signin-signout.csproj", "{1CD199CA-5398-4A7F-AF11-E529FD793860}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A71272FF-3382-49C0-B562-DCD3BA5B869B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A71272FF-3382-49C0-B562-DCD3BA5B869B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A71272FF-3382-49C0-B562-DCD3BA5B869B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A71272FF-3382-49C0-B562-DCD3BA5B869B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CD199CA-5398-4A7F-AF11-E529FD793860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CD199CA-5398-4A7F-AF11-E529FD793860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CD199CA-5398-4A7F-AF11-E529FD793860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CD199CA-5398-4A7F-AF11-E529FD793860}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-namespace Desktop.Models;
+namespace az204.auth.signin.signout.Models;
 
 public class ErrorViewModel
 {
