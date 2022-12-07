@@ -8,3 +8,6 @@ az deployment group create --resource-group rg-arm --template-file azuredeploy.j
 
 #### Subir todos os recursos sem arquivo de parametros
 az deployment group create --resource-group rg-arm --template-file storagedeploy.json
+
+#### Validar template
+az deployment group validate -g rg-arm --template-file storagedeploy.json

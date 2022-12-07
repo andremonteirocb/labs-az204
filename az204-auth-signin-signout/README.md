@@ -2,7 +2,7 @@
 
 #### Criar um aplicativo no AD
 
-#### Configurar authencation -> add platform
+#### Configurar authencation -> add platform -> web
 - https://localhost:5001/
 - https://localhost:5001/signin-oidc
 - https://localhost:5001/signout-oidc

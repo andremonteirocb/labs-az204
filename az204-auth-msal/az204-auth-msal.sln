@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "az204-auth-msal", "az204-auth-msal.csproj", "{BCFB887F-06F5-4539-A652-30316D69A561}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az204-auth-msal-mvc", "..\az204-auth-msal-mvc\WebApplication1\az204-auth-msal-mvc.csproj", "{B250CD10-A9FC-48A8-98BC-EA47073E0A6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "az204-auth-msal-mvc", "..\az204-auth-msal-mvc\az204-auth-msal-mvc.csproj", "{219F53F2-4BE0-47D0-84FC-460FBA439D3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{BCFB887F-06F5-4539-A652-30316D69A561}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCFB887F-06F5-4539-A652-30316D69A561}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCFB887F-06F5-4539-A652-30316D69A561}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B250CD10-A9FC-48A8-98BC-EA47073E0A6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B250CD10-A9FC-48A8-98BC-EA47073E0A6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B250CD10-A9FC-48A8-98BC-EA47073E0A6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B250CD10-A9FC-48A8-98BC-EA47073E0A6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{219F53F2-4BE0-47D0-84FC-460FBA439D3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{219F53F2-4BE0-47D0-84FC-460FBA439D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{219F53F2-4BE0-47D0-84FC-460FBA439D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{219F53F2-4BE0-47D0-84FC-460FBA439D3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
