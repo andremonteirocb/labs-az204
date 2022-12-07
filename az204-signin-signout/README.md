@@ -7,5 +7,5 @@
 - https://localhost:5001/signin-oidc
 - https://localhost:5001/signout-oidc
 
-#### Criar aplicação web mvc
+#### Criar aplicaÃ§Ã£o web mvc
 dotnet new mvc --auth nomeaplicacao --client-id seu_client_id --tenant-id seu_tenant_id --domain localhost
