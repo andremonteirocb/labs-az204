@@ -1,4 +1,8 @@
-﻿using Azure.Identity;
+﻿using Azure;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 using Microsoft.Graph;
 using Microsoft.Identity.Client;
 
@@ -9,12 +13,15 @@ namespace az204_msal
         Task ReadDelegateAuthenticationProvider();
         Task ReadInteractiveBrowser();
         Task ReadUsernamePassword();
+        Task ReadClientSecret();
         Task ReadDeviceCode();
+        Task ReadKeyVault();
     }
 
     public class MeService : IMeService
     {
         private const string _clientId = "APPLICATION_CLIENT_ID";
+        private const string _clientSecret = "APPLICATION_CLIENT_SECRET";
         private const string _tenantId = "DIRECTORY_TENANT_ID";
 
         /// <summary>
@@ -148,6 +155,34 @@ namespace az204_msal
                 .GetAsync();
 
             Console.WriteLine($"Graph Me:\t{user.DisplayName}");
+        }
+
+        /// <summary>
+        /// Obtém valor do key vault
+        /// </summary>
+        /// <returns></returns>
+        public async Task ReadClientSecret()
+        {
+            Console.WriteLine("Processando Key Vault.");
+
+            var credential = new ClientSecretCredential(_tenantId, _clientId, _clientSecret);
+            var blobClient = new BlobContainerClient(new Uri("https://nome_storage_account.blob.core.windows.net/nome_container"), credential);
+
+            Console.WriteLine($"Blob url:\t{blobClient.Uri}");
+        }
+
+        /// <summary>
+        /// Obtém valor do key vault
+        /// </summary>
+        /// <returns></returns>
+        public async Task ReadKeyVault()
+        {
+            Console.WriteLine("Processando Key Vault.");
+
+            var client = new SecretClient(new Uri("https://nome_key_vault.vault.azure.net/"), new DefaultAzureCredential());
+            var secret = await client.GetSecretAsync("nome_chave");
+
+            Console.WriteLine($"Key vault value:\t{secret.Value.Value}");
         }
     }
 }

@@ -24,6 +24,8 @@ async Task CriarMenu()
     Console.WriteLine("2- Interactive Browser:");
     Console.WriteLine("3- Usuário/Senha:");
     Console.WriteLine("4- Device Code:");
+    Console.WriteLine("5- Client Secret:");
+    Console.WriteLine("6- Key Vault:");
     var opcao = Console.ReadLine();
 
     switch (opcao)
@@ -39,6 +41,12 @@ async Task CriarMenu()
             break;
         case "4":
             await meService.ReadDeviceCode();
+            break;
+        case "5":
+            await meService.ReadClientSecret();
+            break;
+        case "6":
+            await meService.ReadKeyVault();
             break;
     }
 

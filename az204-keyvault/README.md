@@ -22,6 +22,9 @@ az keyvault create --resource-group azkeyvault-rg --name azkeyvault-alsam --sku 
 #### Criar uma secret no cofre
 az keyvault secret set --vault-name azkeyvault-alsam --name StorageConnectionString --value DefaultEndpointsProtocol=https;EndpointSuffix=core.windows.net;AccountName=storageaccountalsam;AccountKey=aWfQ8rRx5F6TmYmWJBc10LOLFCVHHjl81xyuWzeXnBPbT98DTcesdmQ2qZJ1sROK64nIdn+K+5Co+AStSaFIAw==;BlobEndpoint=https://storageaccountalsam.blob.core.windows.net/;FileEndpoint=https://storageaccountalsam.file.core.windows.net/;QueueEndpoint=https://storageaccountalsam.queue.core.windows.net/;TableEndpoint=https://storageaccountalsam.table.core.windows.net/
 
+#### Visualizar uma secret no cofre
+az keyvault secret show --name StorageConnectionString --vault-name azkeyvault-alsam
+
 #### Criar uma app service function
 az functionapp create --name GetBlobKeyVault --resource-group azkeyvault-rg --storage-account storageaccountalsam --consumption-plan-location eastus --runtime dotnet --os-type Windows --functions-version 4
 
