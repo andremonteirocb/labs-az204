@@ -32,4 +32,5 @@
 
 Referências: <br />
 https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams <br />
+https://github.com/MicrosoftLearning/AZ-204-DevelopingSolutionsforMicrosoftAzure <br />
 https://github.com/leandrofmarcos/AzDurableFunction
