@@ -24,6 +24,7 @@ static async Task Run(IServiceProvider services)
     await storageService.Load(blobContainerClient);
     await storageService.Download(blobContainerClient);
     await storageService.Delete(blobContainerClient);
+    await storageService.GenerateUrlSas(blobContainerClient);
 }
 
 Console.WriteLine("Press enter to exit the sample application.");

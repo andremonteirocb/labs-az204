@@ -11,7 +11,9 @@ public interface IStorageService
     Task Download(BlobContainerClient containerClient);
     Task Delete(BlobContainerClient containerClient);
     Task SetPolicy(string namePolicy, int expiresInMinutes, BlobContainerClient containerClient);
+    Task GenerateUrlSas(BlobContainerClient container);
 }
+
 public class StorageService : IStorageService
 {
     private readonly string _containerName;
@@ -140,15 +142,11 @@ public class StorageService : IStorageService
         await containerClient.SetAccessPolicyAsync(permissions: new BlobSignedIdentifier[] { identifier });
     }
 
-
-    public async Task GenerateUrlSas(BlobServiceClient blobServiceClient)
+    public async Task GenerateUrlSas(BlobContainerClient container)
     {
-        BlobContainerClient container = blobServiceClient.GetBlobContainerClient(_containerName);
-
         await foreach (BlobItem blob in container.GetBlobsAsync())
         {
             BlobClient blobClient = container.GetBlobClient(blob.Name);
-
             BlobSasBuilder sasBuilder = new BlobSasBuilder()
             {
                 BlobContainerName = _containerName,
