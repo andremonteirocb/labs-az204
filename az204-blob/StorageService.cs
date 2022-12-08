@@ -1,5 +1,6 @@
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using Azure.Storage.Sas;
 
 public interface IStorageService
 {
@@ -19,10 +20,10 @@ public class StorageService : IStorageService
     public StorageService()
     {
         _containerName = "wtblob" + Guid.NewGuid().ToString();
-        _localPath = @"C:\\Users\\andre.monteiro\\Dropbox\\Programação\\ASP.Net\\Estudos\\Certificacao.AZ204\\az204-blob\\data";
+        _localPath = @"C:\\Users\\andre.monteiro\\Dropbox\\Programaï¿½ï¿½o\\ASP.Net\\Estudos\\Certificacao.AZ204\\az204-blob\\data";
         _fileName = "wtfile" + Guid.NewGuid().ToString() + ".txt";
     }
-    
+
     public BlobServiceClient CreateConnection()
     {
         // Copy the connection string from the portal in the variable below.
@@ -137,5 +138,31 @@ public class StorageService : IStorageService
         };
 
         await containerClient.SetAccessPolicyAsync(permissions: new BlobSignedIdentifier[] { identifier });
+    }
+
+
+    public async Task GenerateUrlSas(BlobServiceClient blobServiceClient)
+    {
+        BlobContainerClient container = blobServiceClient.GetBlobContainerClient(_containerName);
+
+        await foreach (BlobItem blob in container.GetBlobsAsync())
+        {
+            BlobClient blobClient = container.GetBlobClient(blob.Name);
+
+            BlobSasBuilder sasBuilder = new BlobSasBuilder()
+            {
+                BlobContainerName = _containerName,
+                BlobName = blobClient.Name,
+                Resource = "b"
+            };
+
+            sasBuilder.ExpiresOn = DateTimeOffset.UtcNow.AddHours(1);
+            sasBuilder.SetPermissions(BlobSasPermissions.Read |
+                BlobSasPermissions.Write);
+
+            Uri sasUri = blobClient.GenerateSasUri(sasBuilder);
+            Console.WriteLine("SAS URI for blob is: {0}", sasUri);
+            await Console.Out.WriteLineAsync($"Existing Blob:\t{blob.Name}");
+        }
     }
 }
