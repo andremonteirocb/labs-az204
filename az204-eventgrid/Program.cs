@@ -2,10 +2,8 @@ using Azure;
 using Azure.Core.Serialization;
 using Azure.Messaging;
 using Azure.Messaging.EventGrid;
-using System;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 public class Program
 {
