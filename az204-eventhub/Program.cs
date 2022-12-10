@@ -8,8 +8,8 @@ using System.Text;
 
 public class Program
 {
-    private const string eventHubsConnectionString = "Endpoint=sb://eventohubalsam.servicebus.windows.net/;SharedAccessKeyName=policy;SharedAccessKey=7U7Qf4YfFfs0Zd9HFcTDyNrSYYq9qr+cmRRcR3A/YY8=;EntityPath=eventhubalsam";
-    private const string eventHubName = "eventhubalsam";
+    private const string eventHubsConnectionString = "hub_connection_string";
+    private const string eventHubName = "hub_name";
 
     public static async Task Main(string[] args)
     {

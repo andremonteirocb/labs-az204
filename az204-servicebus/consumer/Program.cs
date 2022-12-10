@@ -3,8 +3,8 @@ namespace MessageReader
 {
     class Program
     {
-        static string serviceBusConnectionString = "<serviceBus-connection-string>";
-        static string queueName = "messagequeue";
+        static string serviceBusConnectionString = "servicehub_connection_string";
+        static string queueName = "queue_name";
         static ServiceBusClient client;
         static ServiceBusProcessor processor;
         static async Task MessageHandler(ProcessMessageEventArgs args)

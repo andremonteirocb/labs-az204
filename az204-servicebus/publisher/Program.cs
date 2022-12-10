@@ -3,8 +3,8 @@ namespace MessagePublisher
 {
     public class Program
     {
-        static string serviceBusConnectionString = "<serviceBus-connection-string>";
-        private const string queueName = "messagequeue";
+        static string serviceBusConnectionString = "servicehub_connection_string";
+        private const string queueName = "queue_name";
         private const int numOfMessages = 3;
         static ServiceBusClient client = default!;
         static ServiceBusSender sender = default!;

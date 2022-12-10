@@ -33,6 +33,7 @@
 #### Implementar o Gerenciamento de API
 #### Desenvolver soluções baseadas em evento
 - az204-eventgrid
+- az204-eventhub
 
 #### Desenvolver soluções baseadas em mensagens
 - az204-servicebus
