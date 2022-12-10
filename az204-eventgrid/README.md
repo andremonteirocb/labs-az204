@@ -1,7 +1,10 @@
 #### Azure Event Grid
 
-#### Criar event grid
+#### Criar fila (queue)
 az eventgrid topic create --name topic_name --resource-group nomeresourcegroup --location nome_location --public-network-access enabled --input-schema eventgridschema  
+
+#### Criar tópico (topic)
+az servicebus topic create --resource-group nome_resource_group --namespace-name nome_namespace --name nome_topic --max-message-size-in-kilobytes 102400
 
 #### Setar quantidade de tentativas para falha
 az eventgrid event-subscription create -g nomeresourcegroup --topic-name topic_name --name subscription_name --endpoint subscription_name_endpoint_url --max-delivery-attempts numero_tentativas
