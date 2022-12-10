@@ -31,3 +31,6 @@ az eventgrid topic show --name az204-egtopic-alsam -g az204-evgrid-rg --query "e
 az eventgrid topic key list --name az204-egtopic-alsam -g az204-evgrid-rg --query "key1" --output tsv
 
 #### Executar aplicação para enviar os eventos
+
+#### Referência
+https://github.com/Azure-Samples/azure-event-grid-viewer
