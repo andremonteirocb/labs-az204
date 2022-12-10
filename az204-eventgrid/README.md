@@ -10,4 +10,4 @@ az eventgrid event-subscription create -g nomeresourcegroup --topic-name topic_n
 Aba Docker -> Docker Hub -> Public -> Image microsoftlearning/azure-event-grid-viewer:latest
 
 #### Criar subscription apontando para webapp criado acima
-#### Copiar a url e key do Event Grid Topic e executar essa aplicação
+#### Copiar a url e key do Event Grid Topic e executar
