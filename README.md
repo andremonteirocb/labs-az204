@@ -28,7 +28,14 @@
 - az204-auth-graph
 
 #### Implementar soluções de nuvem seguras
-- em andamento
+- az204-auth-graph
+
+#### Implementar o Gerenciamento de API
+#### Desenvolver soluções baseadas em evento
+- az204-eventgrid
+
+#### Desenvolver soluções baseadas em mensagens
+- az204-servicebus
 
 Referências: <br />
 https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams <br />
