@@ -6,7 +6,7 @@ az eventgrid topic create --name topic_name --resource-group nomeresourcegroup -
 #### Setar quantidade de tentativas para falha
 az eventgrid event-subscription create -g nomeresourcegroup --topic-name topic_name --name subscription_name --endpoint subscription_name_endpoint_url --max-delivery-attempts numero_tentativas
 
-#### Criar webapp de imagem do docker hub
+#### Criar webapp de imagem do docker hub (webhook subscription)
 Aba Docker -> Docker Hub -> Public -> Image microsoftlearning/azure-event-grid-viewer:latest
 
 #### Criar subscription apontando para webapp criado acima
