@@ -1,6 +1,6 @@
 #### Azure Service Bus
 
-#### Criar espaço de trabalho no service bus
+#### Criar espaço de trabalho
 az servicebus namespace create --resource-group nome_resource_group --name nome_namespace --location nome_location --tags tag1=value1 tag2=value2 --sku Basic
 
 #### Criar fila
