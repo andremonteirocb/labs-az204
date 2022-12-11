@@ -1,5 +1,9 @@
 ## Azure Resource Manager
 
+## Pacotes para vscode
+https://marketplace.visualstudio.com/items?itemName=samcogan.arm-snippets
+https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools
+
 #### Criar o grupo de recurso
 az group create -n rg-arm -l eastus
 
