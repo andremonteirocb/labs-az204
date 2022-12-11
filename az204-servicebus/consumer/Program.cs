@@ -5,6 +5,9 @@ namespace MessageReader
     {
         static string serviceBusConnectionString = "servicehub_connection_string";
         static string queueName = "queue_name";
+
+        static string topicName = "topic_name";
+        static string subscriptionName = "subscription_name";
         static ServiceBusClient client;
         static ServiceBusProcessor processor;
         static async Task MessageHandler(ProcessMessageEventArgs args)
@@ -23,6 +26,8 @@ namespace MessageReader
         {
             client = new ServiceBusClient(serviceBusConnectionString);
             processor = client.CreateProcessor(queueName, new ServiceBusProcessorOptions());
+            //processor = client.CreateProcessor(topicName, subscriptionName, new ServiceBusProcessorOptions());
+            
             try
             {
                 processor.ProcessMessageAsync += MessageHandler;
