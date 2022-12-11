@@ -2,8 +2,10 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "variables": {
-        "serviceBusNameSpaceName": "serviceBusNameSpaceName",
-        "serviceBusName": "serviceBusName",
+        "serviceBusNameSpaceName": "serviceBusNameSpaceNamealsam",
+        "queueName": "queueNamealsam",
+        "topicName": "topicNamealsam",
+        "subscriptionName": "subscription",
         "location": "eastus"
     },
     "resources": [
@@ -13,12 +15,18 @@
             "apiVersion": "2021-01-01-preview",
             "location": "[variables('location')]",
             "sku": {
-                "name": "Standard"
+                "name": "Standard",
+                "tier": "Standard"
             },
-            "properties": { }
+            "properties": {
+                "minimumTlsVersion": "1.0",
+                "publicNetworkAccess": "Enabled",
+                "disableLocalAuth": false,
+                "zoneRedundant": false
+            }
         },
         {
-            "name": "[concat(variables('serviceBusNameSpaceName'), '/', variables('serviceBusName'))]",
+            "name": "[concat(variables('serviceBusNameSpaceName'), '/', variables('queueName'))]",
             "type": "Microsoft.ServiceBus/namespaces/queues",
             "apiVersion": "2021-01-01-preview",
             "dependsOn": [
@@ -36,6 +44,49 @@
                 "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
                 "enablePartitioning": false,
                 "enableExpress": false
+            }
+        },
+        {
+            "name": "[concat(variables('serviceBusNameSpaceName'), '/', variables('topicName'))]",
+            "type": "Microsoft.ServiceBus/namespaces/topics",
+            "apiVersion": "2021-01-01-preview",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', variables('serviceBusNameSpaceName'))]"
+            ],
+            "properties": {
+                "lockDuration": "PT5M",
+                "maxSizeInMegabytes": 1024,
+                "requiresDuplicateDetection": false,
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": false,
+                "duplicateDetectionHistoryTimeWindow": "PT10M",
+                "maxDeliveryCount": 10,
+                "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S",
+                "enablePartitioning": false,
+                "enableExpress": false
+            }
+        },
+        {
+            "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+            "apiVersion": "2022-01-01-preview",
+            "name": "[concat(variables('serviceBusNameSpaceName'), '/', variables('topicName'), '/', variables('subscriptionName'))]",
+            "location": "[variables('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces/topics', variables('serviceBusNameSpaceName'), variables('topicName'))]",
+                "[resourceId('Microsoft.ServiceBus/namespaces', variables('serviceBusNameSpaceName'))]"
+            ],
+            "properties": {
+                "isClientAffine": false,
+                "lockDuration": "PT30S",
+                "requiresSession": false,
+                "defaultMessageTimeToLive": "P14D",
+                "deadLetteringOnMessageExpiration": false,
+                "deadLetteringOnFilterEvaluationExceptions": false,
+                "maxDeliveryCount": 3,
+                "status": "Active",
+                "enableBatchedOperations": true,
+                "autoDeleteOnIdle": "P14D"
             }
         }
     ]
