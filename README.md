@@ -37,6 +37,7 @@
 
 #### Desenvolver soluções baseadas em mensagens
 - az204-servicebus
+- az204-queuestorage
 
 Referências: <br />
 https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams <br />
