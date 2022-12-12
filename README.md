@@ -43,7 +43,7 @@
 - az204-application-insights
 
 <br />
-Qualquer dúvida ou necessidade podem entrar em contato comigo que irei ajudar no que estiver ao meu alcance, abaixo segue as referências utilizadas: <br />
+Referências: <br />
 https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams <br />
 https://github.com/MicrosoftLearning/AZ-204-DevelopingSolutionsforMicrosoftAzure <br />
 https://github.com/leandrofmarcos/AzDurableFunction <br />
