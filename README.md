@@ -39,7 +39,8 @@
 - az204-servicebus
 - az204-queuestorage
 
-Referências: <br />
+Disponibilizo abaixo todos os projetos de estudo para certificação AZ-204, tentei detalhar o máximo para facilitar o entendimento de outros candidatos a prova. Qualquer dúvida ou necessidade podem entrar em contato comigo que irei ajudar no que estiver ao meu alcance, abaixo segue as referências utilizadas: <br />
+
 https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams <br />
 https://github.com/MicrosoftLearning/AZ-204-DevelopingSolutionsforMicrosoftAzure <br />
 https://github.com/leandrofmarcos/AzDurableFunction <br />
