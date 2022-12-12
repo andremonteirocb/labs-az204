@@ -1,4 +1,4 @@
-# Disponibilizo aqui todos os projetos de estudo para certificação AZ-204, tentei detalhar o máximo para facilitar o entendimento de outros candidatos a prova. 
+# Segue abaixo os projetos criado para estudo da certificação AZ-204, busquei detalhar ao máximo para facilitar o entendimento de outros interessados na realização desta certificação. 
 ## Laboratório de estudo para certificação AZ-204
 ### Tópicos abordados
 
