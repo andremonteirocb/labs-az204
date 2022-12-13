@@ -42,6 +42,10 @@
 #### Instrumentar soluções para dar suporte ao monitoramento e ao registro em log 
 - az204-application-insights
 
+#### Integrar o cache e a entrega de conteúdo nas soluções 
+- az204-cache
+- az204-cdn
+
 <br />
 Qualquer dúvida ou necessidade podem entrar em contato comigo que irei ajudar no que estiver ao meu alcance, abaixo segue as referências utilizadas: 
 https://learn.microsoft.com/pt-br/certifications/azure-developer/?WT.mc_id=certtransslide-slide-wwl&source=learn#certification-exams <br />
