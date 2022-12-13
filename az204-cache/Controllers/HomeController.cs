@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using az204_cache.Models;
+using StackExchange.Redis;
 
 namespace az204_cache.Controllers;
 
@@ -23,8 +24,17 @@ public class HomeController : Controller
         return View("Index", value);
     }
 
-    public IActionResult Privacy()
+    public async Task<IActionResult> Privacy()
     {
+        var result = await _redisService.Execute("ping");
+        Console.WriteLine($"PING = {result.Type} : {result}");
+
+        bool setValue = await _redisService.Set("test:key", "100");
+        Console.WriteLine($"SET: {setValue}");
+
+        string getValue = await _redisService.Get("test:key");
+        Console.WriteLine($"GET: {getValue}");
+
         return View();
     }
 
