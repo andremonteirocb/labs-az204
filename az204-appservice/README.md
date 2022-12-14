@@ -18,3 +18,9 @@ az webapp create --name nome_app_serve --plan nome_service_plan --resource-group
 #### Adicionar configuração no azure container registry (ACR)
 az webapp config container set --resource-group rg-arm --name nome_app_serve --docker-registry-server-url http://nome_container_registry.azurecr.io --docker-registry-server-user nome_usuario_acr
 --docker-registry-server-password senha_usuario_acr
+
+#### Ativar logs
+az webapp log config --name nome_app_serve --resource-group rg-arm --docker-container-logging filesystem
+
+#### Visualizar logs
+az webapp log tail --name nome_app_serve --resource-group rg-arm
