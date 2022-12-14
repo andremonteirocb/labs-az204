@@ -1,21 +1,21 @@
-apiVersion: '2019-12-01'
+apiVersion: "2019-12-01"
 location: eastus
 name: file-share-demo
 properties:
   containers:
-  - name: hellofiles
-    properties:
-      environmentVariables: []
-      image: mcr.microsoft.com/azuredocs/aci-hellofiles
-      ports:
-      - port: 80
-      resources:
-        requests:
-          cpu: 1.0
-          memoryInGB: 1.5
-      volumeMounts:
-      - mountPath: /aci/logs/
-        name: filesharevolume
+    - name: hellofiles
+      properties:
+        environmentVariables: []
+        image: mcr.microsoft.com/azuredocs/aci-hellofiles
+        ports:
+          - port: 80
+        resources:
+          requests:
+            cpu: 1.0
+            memoryInGB: 1.5
+        volumeMounts:
+          - mountPath: /aci/logs/
+            name: filesharevolume
   osType: Linux
   restartPolicy: Always
   ipAddress:
@@ -24,10 +24,10 @@ properties:
       - port: 80
     dnsNameLabel: aci-demo
   volumes:
-  - name: filesharevolume
-    azureFile:
-      sharename: acishare
-      storageAccountName: <Storage account name>
-      storageAccountKey: <Storage account key>
+    - name: filesharevolume
+      azureFile:
+        sharename: acishare
+        storageAccountName: <Storage account name>
+        storageAccountKey: <Storage account key>
 tags: {}
 type: Microsoft.ContainerInstance/containerGroups

@@ -1,0 +1,26 @@
+apiVersion: "2019-12-01"
+location: eastus
+name: secret-volume-demo
+properties:
+  containers:
+    - name: aci-tutorial-app
+      properties:
+        environmentVariables: []
+        image: mcr.microsoft.com/azuredocs/aci-helloworld:latest
+        ports: []
+        resources:
+          requests:
+            cpu: 1.0
+            memoryInGB: 1.5
+        volumeMounts:
+          - mountPath: /mnt/secrets
+            name: secretvolume1
+  osType: Linux
+  restartPolicy: Always
+  volumes:
+    - name: secretvolume1
+      secret:
+        mysecret1: TXkgZmlyc3Qgc2VjcmV0IEZPTwo=
+        mysecret2: TXkgc2Vjb25kIHNlY3JldCBCQVIK
+tags: {}
+type: Microsoft.ContainerInstance/containerGroups
