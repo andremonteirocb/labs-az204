@@ -27,6 +27,6 @@ az webapp log tail --name nome_app_serve --resource-group rg-arm
 
 #### Anotações
 - <strong>Always On:</strong> Evita que seu aplicativo fique ocioso devido à inatividade; <br />
-- <strong>ARR affinity:</strong> Melhore o desempenho do seu aplicativo sem estado desativando o Affinity Cookie. 
+- <strong>ARR affinity (Application Request Routing):</strong> Melhore o desempenho do seu aplicativo sem estado desativando o Affinity Cookie. 
 Os aplicativos com estado devem manter essa configuração ativada para compatibilidade; <br />
 - <strong>WEBSITE_RUN_FROM_PACKAGE:</strong> WEBSITE_RUN_FROM_PACKAGE="1" permite que você execute seu aplicativo de um pacote local para seu aplicativo.
