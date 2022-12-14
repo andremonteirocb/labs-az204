@@ -26,7 +26,7 @@ az webapp log config --name nome_app_serve --resource-group rg-arm --docker-cont
 az webapp log tail --name nome_app_serve --resource-group rg-arm
 
 #### Anotações
-Always On: Evita que seu aplicativo fique ocioso devido à inatividade;
-ARR affinity: Melhore o desempenho do seu aplicativo sem estado desativando o Affinity Cookie. 
+<strong>Always On:</strong> Evita que seu aplicativo fique ocioso devido à inatividade;
+<strong>ARR affinity:</strong> Melhore o desempenho do seu aplicativo sem estado desativando o Affinity Cookie. 
 Os aplicativos com estado devem manter essa configuração ativada para compatibilidade;
-WEBSITE_RUN_FROM_PACKAGE: WEBSITE_RUN_FROM_PACKAGE="1" permite que você execute seu aplicativo de um pacote local para seu aplicativo
+<strong>WEBSITE_RUN_FROM_PACKAGE:</strong> WEBSITE_RUN_FROM_PACKAGE="1" permite que você execute seu aplicativo de um pacote local para seu aplicativo
