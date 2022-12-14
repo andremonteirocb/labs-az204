@@ -11,7 +11,18 @@ string key = "key";
 using IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((_, services) =>
     {
-        services.AddSingleton(new CosmosClient(endpoint, key));
+        var cosmosClient = new CosmosClient(endpoint, key,
+            new CosmosClientOptions()
+            {
+                ApplicationRegion = Regions.EastUS
+            }
+        );
+
+        // var cosmosClientBuilder = new CosmosClientBuilder(endpoint, key)
+        //     .WithApplicationRegion(Regions.EastUS);
+        // cosmosClient = cosmosClientBuilder.Build();
+
+        services.AddSingleton(cosmosClient);
         services.AddScoped<ICosmoDbService, CosmoDbService>();
     })
     .Build();
