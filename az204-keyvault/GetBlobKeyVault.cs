@@ -19,6 +19,7 @@ namespace az204_keyvault
             string connectionString = Environment.GetEnvironmentVariable("StorageConnectionString");
             BlobClient blob = new BlobClient(connectionString, "drop", "records.json");
             var response = await blob.DownloadAsync();
+
             return new FileStreamResult(response?.Value?.Content, response?.Value?.ContentType);
         }
     }
