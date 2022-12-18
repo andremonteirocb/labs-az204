@@ -1,4 +1,4 @@
 ## Azure Cognitive Services
 
-Referências:
+Referências: <br />
 https://github.com/Azure-Samples/cognitive-services-quickstart-code
